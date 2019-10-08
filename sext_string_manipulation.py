@@ -49,11 +49,12 @@ print(find_max())
 
 
 
+
 # # STRING FUNCTION
 
-str = "{se{d[rr]4}{}3}"
+str_1 = "se{d[rr]4}{}3"
+str = "[]]["
 
-# { , se{d[rr]4}{}3}
 
 def check_equal(dict, i):
     if dict["open"][i]["cnt"] == dict["close"][i]["cnt"]:
@@ -110,8 +111,56 @@ def string_maniplation(str):
             cnt = cnt + 1
 
     if cnt == count_of_brackets:
-        print("String is valid.")
+        return True
     else:
-        print("String in not valid.")
+        return False
 
-string_maniplation(str)
+
+def check_start_with(str):
+
+    if not string_maniplation(str):
+        print("Text not valid")
+        exit()
+
+    bracket_1 = False # '{'
+    bracket_2 = False # '['
+    bracket_3 = False # '('
+
+    for i in str:
+        if i == '{':
+            bracket_1 = not bracket_1
+            continue
+        if i == '[':
+            bracket_2 = not bracket_2
+            continue
+        if i == '(':
+            bracket_3 = not bracket_3
+            continue
+
+        if i == '}' and bracket_1:
+            bracket_1 = not bracket_1
+            continue
+        if i == ']' and bracket_2:
+            bracket_2 = not bracket_2
+            continue
+        if i == ')' and bracket_3:
+            bracket_3 = not bracket_3
+            continue
+
+        if i == '}' and not bracket_1:
+            print("Text not valid")
+            exit()
+        if i == ']' and not bracket_2:
+            print("Text not valid")
+            exit()
+        if i == ')' and not bracket_3:
+            print("Text not valid")
+            exit()
+    print("Text is valid")
+
+
+check_start_with(str)
+
+
+
+
