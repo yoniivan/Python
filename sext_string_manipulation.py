@@ -161,7 +161,7 @@ def check_start_with(str):
 
 check_start_with(str)
 
-# Complexity of (2n)
+# Complexity of (3n)
 
 
 
