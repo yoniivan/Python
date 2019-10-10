@@ -1,59 +1,30 @@
-import json
+str_good = "[(hjgfhjgdfhgf)]{}{[(lkjhkjggf)()](hgfdghdfh)}"
+str_not_good = "[(cgfjhgkjh]kjgkjhg)"
 
 
-# FIND MAX
-text_50_words = "aaa bbb ccc vvv bbb rrr yyy aaa vvv bbb www eee ttt uuu"
-
-arr_words = text_50_words.split()
-
-json_obj = {}
-json_obj["words"] = []
-
-arr_words_diff = []
-
-def uniq():
-    for i in arr_words:
-        flag = False
-        length = len(json_obj["words"])
-        if length < 1:
-            word = {"word": i, "cnt": 1}
-            json_obj["words"].append(word)
-        else:
-            for j in json_obj["words"]:
-                if j["word"] == i:
-                    j["cnt"] = j["cnt"] + 1
-                    flag = True
-                    break
-            if flag == False:
-                word = {"word": i, "cnt": 1}
-                json_obj["words"].append(word)
-
-uniq()
-
-def find_max():
-    max = 0
-    word = {}
-    for i in json_obj["words"]:
-        if i["cnt"] > max:
-            max = i["cnt"]
-            word = i
-    return word
-
-print(find_max()) 
-
-#print(json_obj["words"])
+def brackets_to_arr(str_not_good): # (n) notation
+    arr = []
+    for i in str_not_good:
+        if i == '[' or i == ']' or i == '{' or i == '}' or i == '(' or i == ')':
+            arr.append(i)
+    return arr
 
 
+def logic(arr_brackets): # (n) notation
+    queue = []
+    cnt = 0
+    for i in arr_brackets:
+        if i == '[' or i == '(' or i == '{':
+            cnt = cnt + 1
+            queue.append(i)
+        if i == ']' or i == ')' or i == '}':
+            if i == queue[cnt -1]:
+                queue.pop(cnt -1)
+            else:
+                return False
+    return True
 
 
-
-
-
-
-# # STRING FUNCTION
-
-str_1 = "se{d[rr]4}{}3"
-str = "[]]["
 
 
 def check_equal(dict, i):
@@ -64,7 +35,8 @@ def check_equal(dict, i):
         bracket_equal = {"bracket": dict["open"][i]["bracket"], "status": False}
         dict["equal"].append(bracket_equal)
 
-def string_maniplation(str):
+
+def string_maniplation(str): # (2n) notation
     count_of_brackets = 3
     cnt = 0
     brackets = {
@@ -116,16 +88,13 @@ def string_maniplation(str):
         return False
 
 
-def check_start_with(str):
-
-    if not string_maniplation(str):
+def check_start_with(str): # (n) notation
+    if not string_maniplation(str) or not logic(brackets_to_arr(str_not_good)):
         print("Text not valid")
         exit()
-
     bracket_1 = False # '{'
     bracket_2 = False # '['
     bracket_3 = False # '('
-
     for i in str:
         if i == '{':
             bracket_1 = not bracket_1
@@ -156,12 +125,11 @@ def check_start_with(str):
         if i == ')' and not bracket_3:
             print("Text not valid")
             exit()
-    print("Text is valid")
+
+    print("Text is not valid")
 
 
-check_start_with(str)
-
-# Complexity of (3n)
+check_start_with(str_not_good) # SUM BIG O NOTATION  (5n)
 
 
 
