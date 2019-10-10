@@ -1,3 +1,5 @@
+# Text / words file needs to be inside the same folder as the "words_text.txt" file.
+
 file = 'words_text_file'
 
 def word_to_arr_from_file(file_path):
