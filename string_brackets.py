@@ -30,6 +30,6 @@ def logic(arr_brackets):
 
 
 if logic(brackets_to_arr(str_good)):
-    print("String is valid")
+    print("String is Balanced")
 else:
-    print("String in not valid")
+    print("String in not Balanced")
