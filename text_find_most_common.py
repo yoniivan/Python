@@ -1,5 +1,3 @@
-text_50_words = "aaa bbb ccc vvv bbb rrr yyy aaa vvv bbb www eee ttt uuu"
-
 file = 'words_text_file'
 
 def word_to_arr_from_file(file_path):
