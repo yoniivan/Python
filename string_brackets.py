@@ -1,3 +1,6 @@
+# A program the check if bracket are valid in terms of math rules. 
+
+
 str_good = "[(hjgfhjgdfhgf)]{}{[(lkjhkjggf)()](hgfdghdfh)}"
 str_not_good = "[(cgfjhgkjh]kjgkjhg)"
 
