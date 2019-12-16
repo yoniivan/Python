@@ -1,4 +1,4 @@
-# Text / words file needs to be inside the same folder as the "words_text.txt" file.
+# Gets as a param a text file woth words and returns the most frequency word as a Tuple(key, value)
 
 from itertools import chain
 
