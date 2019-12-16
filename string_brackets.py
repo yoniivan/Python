@@ -3,9 +3,9 @@ str_not_good = "[(cgfjhgkjh]kjgkjhg)"
 
 def brackets_to_arr(str):
     arr = []
-    for i in str:
-        if i == '[' or i == ']' or i == '{' or i == '}' or i == '(' or i == ')':
-            arr.append(i)
+    for char in str:
+        if char == '[' or char == ']' or char == '{' or char == '}' or char == '(' or char == ')':
+            arr.append(char)
     return arr
 
 
@@ -14,15 +14,15 @@ def logic(arr_brackets):
     cnt = 0
     for i in arr_brackets:
         if i == '[' or i == '(' or i == '{':
-            cnt = cnt + 1
+            cnt += 1
             queue.append(i)
             continue
         if i == ']' or i == ')' or i == '}':
             if len(queue) == 0:
                 return False
-            if i == ']' and queue[cnt -1] == '[' or i == '}' and queue[cnt -1] == '{' or i == ')' and queue[cnt -1] == '(':
-                queue.pop(cnt -1)
-                cnt = cnt - 1
+            if i == ']' and queue[cnt-1] == '[' or i == '}' and queue[cnt-1] == '{' or i == ')' and queue[cnt-1] == '(':
+                queue.pop(cnt-1)
+                cnt -= 1
                 continue
     if len(queue) > 0:
         return False
