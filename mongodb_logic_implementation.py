@@ -1,4 +1,6 @@
 # Takes a MongoDB query as a param and prints all rows (inventory) that are valid to the given query.
+# Example: "{\"\$and\": [{\"name\": {\"\$eq\": \"ij\"}}, {\"\$or\": [{\"price\": {\"\$lt\": 2}}, {\"qty\": {\"\$gte\": 15}}]}]}"
+# Will return [{'name': 'ij', 'qty': 3, 'price': 1.99}]
 
 import sys
 import json
@@ -100,8 +102,7 @@ def not_in_operators(attr, query):
 
 
 def find(db, expression):
-    for key, value in expression.items():
-        return outer(value, key, db)
+    return [outer(value, key, db) for key, value in expression.items()]
 
 
 def main():
